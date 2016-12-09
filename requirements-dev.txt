@@ -1,0 +1,6 @@
+Django>=1.10.3
+tox>=2.5.0
+twine
+flake8
+django-bootstrap3
+django-crispy-forms

@@ -1,0 +1,36 @@
+{% load static %}
+{% load bootstrap3 %}
+{% load django_popup_view_field_tags %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en" }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Demo for django-popup-view-field">
+        <meta name="author" content="Grzegorz Tężycki">
+
+        <title>django-popup-view-field</title>
+
+        <!-- Bootstrap core CSS -->
+        {% bootstrap_css %}
+    </head>
+
+    <body>
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <!-- Bootstrap core JS -->
+        <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
+        {% bootstrap_javascript %}
+
+        {# ! This tag add all js scripts and template scripts to this template ! #}
+        {% django_popup_view_field_javascript %}
+
+    </body>
+</html>
+
+
+
+
+
