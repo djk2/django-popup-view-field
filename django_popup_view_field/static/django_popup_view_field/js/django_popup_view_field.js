@@ -14,16 +14,66 @@ $(document).ready(function(){
         return url;
     };
 
-    var get_content = function($dialog, $button, url){
+    // Bind all events for dialog content after content loaded
+    // bind click to elements
+    // override behavior for anchors (all anchors loaded by ajax)
+    // override behavior for submit buttons for forms
+    var bind_events = function($dialog, $button){
         var $dial_body = $dialog.find(".modal-body");
-        var request = $.ajax({
-            url : url,
-            method : "GET",
-            cache : false,
+
+        // Click to evrithing
+        $dial_body.find("*").on("click", function(event){
+            var target_id = null, $target = null;
+            var $elem = $(this);
+            var value = $elem.data("popup-view-value");
+
+            // Set value in field
+            if (value !== undefined) {
+                target_id = $button.data("target");
+                target = $("#" + target_id);
+                event.stopPropagation();
+                $dialog.modal('hide');
+                target.val(value);
+            }
+
+            // Override behavior for anchors
+            if ($elem.is("a[href]") === true) {
+                var href = $elem.prop("href");
+                event.stopPropagation();
+                get_content($dialog, $button, href, "GET");
+                return false;
+            }
         });
 
+        $dial_body.find("form").on("submit", function(event){
+            var $form = $(this);
+            var method = $form.attr("method") || "POST";
+            var action = $form.attr("action") || ".";
+            var data = $form.serialize();
+            event.stopPropagation();
+            get_content($dialog, $button, action, method, data);
+            return false;
+        });
+    };
+
+    // Load content for dialog from popup view by ajax request
+    var get_content = function($dialog, $button, url, method, data=null){
+
+        var ajax_param = {
+            'url' : url,
+            'method' : method,
+            'cache' : false,
+        };
+
+        if (data != null) {
+            ajax_param['data']=data;
+        }
+
+        var request = $.ajax(ajax_param);
+
         request.done(function(response){
-            $dial_body.html(response);
+            $dialog.find(".modal-body").html(response);
+            bind_events($dialog, $button);
         });
         request.fail(function(response){
             $dialog.modal('hide');
@@ -54,7 +104,7 @@ $(document).ready(function(){
         $dialog.on('hidden.bs.modal', function (e) {
             $(this).remove();
         });
-        get_content($dialog, $button, url);
+        get_content($dialog, $button, url, "GET");
     });
 
     $(".popup-view-btn-clear").on("click", function(){

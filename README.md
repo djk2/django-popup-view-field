@@ -22,6 +22,9 @@ Field and widget can render bootstrap dialog window with content from django vie
     * PL - (polish)
 
 
+The first version will be available in next week, after 20 December 2016
+-------------------------------------------------------------------------
+
 
 DO OPISANIA:
 ------------
@@ -51,3 +54,7 @@ DO OPISANIA:
     'django.middleware.common.CommonMiddleware',
 
 * Wymagane 'bootstrap3' lub 'crispy_forms' w INSTALLED_APPS
+
+* Opisać sposób obsługi linków i form w popup view i restrykcje
+  zwrócić uwagę na konieczność by linki i formy odwoływały się
+  do lokalnej domeny, jak budować url dla linków i action w form

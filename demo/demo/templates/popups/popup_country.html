@@ -1,0 +1,25 @@
+<hr/>
+{% for l in ascii_uppercase %}
+    <a href="{% url "django_popup_view_field:get_popup_view" 'CountryPopupView' %}?code={{ l }}">
+        {{ l }}
+    </a> |
+{% endfor %}
+<hr/>
+
+<form action="{% url "django_popup_view_field:get_popup_view" 'CountryPopupView' %}" method="get">
+    <div class="row">
+        <div class="col-xs-3">Search by name:</div>
+        <div class="col-xs-4"><input type="text" name="name"/></div>
+        <div class="col-xs-2"><button type="submit"> Search </button></div>
+    </div>
+</form>
+
+{% if countries.count > 0 %}
+    <ul>
+        {% for country in countries %}
+            <li style="cursor:pointer" data-popup-view-value="{{ country.code }}">
+                <strong>{{ country.code }}</strong> - {{ country.name }}
+            </li>
+        {% endfor %}
+    <ul>
+{% endif %}
