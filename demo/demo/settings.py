@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django_popup_view_field',
 ]
 
- # Added extra
+# Added extra
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 

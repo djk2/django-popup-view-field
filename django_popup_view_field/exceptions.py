@@ -8,4 +8,3 @@ class PopupViewAlreadyRegistered(Exception):
 
 class PopupViewNotRegistered(Exception):
     "Exception when trying use a lookup which is not registered."
-

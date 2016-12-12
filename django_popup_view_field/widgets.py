@@ -18,10 +18,9 @@ class PopupViewWidget(forms.TextInput):
         self.popup_dialog_title = popup_dialog_title
         super(PopupViewWidget, self).__init__(attrs=attrs)
 
-
     def get_view_url(self):
         """Return url for ajax to view for render dialog content"""
-        url = reverse("django_popup_view_field:get_popup_view", args=(self.view_class_name, ))
+        url = reverse("django_popup_view_field:get_popup_view", args=(self.view_class_name,))
         return url
 
     def render(self, name, value, attrs=None):
@@ -47,14 +46,14 @@ class PopupViewWidget(forms.TextInput):
                     data-popup-dialog-title="{popup_dialog_title}"
                     data-url = "{url}"
                 >
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </div>
             </div>
         '''.format(
-            attrs = flatatt(final_attrs),                  # Default attrs for text input
-            target_input_id = final_attrs.get("id", ""),   # id target - place where value from dialog will be insert
-            popup_dialog_title = self.popup_dialog_title,  # title for dialog
-            url = self.get_view_url()
+            attrs=flatatt(final_attrs),                  # Default attrs for text input
+            target_input_id=final_attrs.get("id", ""),   # id target - place where value from dialog will be insert
+            popup_dialog_title=self.popup_dialog_title,  # title for dialog
+            url=self.get_view_url()
         )
 
         return format_html(html)

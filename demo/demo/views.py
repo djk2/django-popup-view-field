@@ -11,13 +11,13 @@ class Index(TemplateView):
     form_2 = None
     form_3 = None
 
-    def get(self,request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         self.form_1 = self.form_class(prefix="form_1")
         self.form_2 = self.form_class(prefix="form_2")
         self.form_3 = self.form_class(prefix="form_3")
         return super(Index, self).get(request, *args, **kwargs)
 
-    def post(self,request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         self.form_1 = self.form_class(prefix="form_1", data=request.POST)
         self.form_2 = self.form_class(prefix="form_2", data=request.POST)
         self.form_3 = self.form_class(prefix="form_3", data=request.POST)

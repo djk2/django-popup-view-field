@@ -8,18 +8,13 @@ from django import forms
 from string import ascii_uppercase
 from .models import Country
 
+
 class SexPopupView(TemplateView):
     template_name = "popups/popup_sex.html"
 
 
-registry_popup_view.register(SexPopupView)
-
-
 class ColorPopupView(TemplateView):
     template_name = "popups/popup_color.html"
-
-
-registry_popup_view.register(ColorPopupView)
 
 
 class CountryPopupView(TemplateView):
@@ -46,4 +41,7 @@ class CountryPopupView(TemplateView):
         return context
 
 
+# Register popup views
+registry_popup_view.register(SexPopupView)
+registry_popup_view.register(ColorPopupView)
 registry_popup_view.register(CountryPopupView)

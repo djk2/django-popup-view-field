@@ -36,5 +36,5 @@ class RegistryPopupViwe(object):
         else:
             return view_class
 
-registry_popup_view = RegistryPopupViwe()
 
+registry_popup_view = RegistryPopupViwe()

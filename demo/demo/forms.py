@@ -1,12 +1,11 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
 from django_popup_view_field import PopupViewField
 
 from .popups import (
     SexPopupView,
     ColorPopupView,
-    CountryPopupView
+    CountryPopupView,
 )
 
 
@@ -16,10 +15,10 @@ class DemoForm(forms.Form):
 
     sex = PopupViewField(
         # Attrs for popup
-        view_class = SexPopupView,
+        view_class=SexPopupView,
         popup_dialog_title='What is your SEX',
         # Attr for CharField
-        required = True,
+        required=True,
         help_text='female or male'
     )
 
@@ -29,4 +28,3 @@ class DemoForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(DemoForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('Submit', 'submit'))

@@ -1,32 +1,4 @@
-# django-popup-view-field
-Field and widget can render bootstrap dialog window with content from django view.
-
-
-- Support for :
-
-    * Python: 2.7, 3.4
-    * Django: 1.8, 1.9, 1.10
-    * django-crispy-forms
-    * django-bootstrap3
-
-- Require:
-
-    * Django
-    * django-bootstrap3 or django-crispy-forms
-    * bootstrap3
-    * JQuery
-
-- Supported locale:
-
-    * EN - (english)
-    * PL - (polish)
-
-
-The first version will be available in next week, after 20 December 2016
--------------------------------------------------------------------------
-
-
-DO OPISANIA:
+TODO:
 ------------
 
 * Mimifikacja JS
@@ -58,3 +30,5 @@ DO OPISANIA:
 * Opisać sposób obsługi linków i form w popup view i restrykcje
   zwrócić uwagę na konieczność by linki i formy odwoływały się
   do lokalnej domeny, jak budować url dla linków i action w form
+
+* Opisać data-popup-view-valie="****" oraz data-popup-view-valie="html()"

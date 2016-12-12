@@ -29,6 +29,16 @@ $(document).ready(function(){
 
             // Set value in field
             if (value !== undefined) {
+
+                // If data-popup-view-value is html() then
+                // full html content of element is set as value
+                if ( value === "html()" ) {
+                    value = $elem.html();
+                    if (value) {
+                        value = value.trim();
+                    }
+                }
+
                 target_id = $button.data("target");
                 target = $("#" + target_id);
                 event.stopPropagation();
