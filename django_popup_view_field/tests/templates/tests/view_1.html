@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+{% load django_popup_view_field_tags %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>View 1</title>
+        {% bootstrap_css %}
+    </head>
+
+    <body>
+        {% crispy form %}
+
+        <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
+        {% bootstrap_javascript %}
+        {% django_popup_view_field_javascript %}
+    </body>
+</html>

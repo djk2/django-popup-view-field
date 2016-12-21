@@ -50,7 +50,7 @@ $(document).ready(function(){
             if ($elem.is("a[href]") === true) {
                 var href = $elem.prop("href");
                 event.stopPropagation();
-                get_content($dialog, $button, href, "GET");
+                get_content($dialog, $button, href, "GET", null);
                 return false;
             }
         });
@@ -67,12 +67,12 @@ $(document).ready(function(){
     };
 
     // Load content for dialog from popup view by ajax request
-    var get_content = function($dialog, $button, url, method, data=null){
+    var get_content = function($dialog, $button, url, method, data){
 
         var ajax_param = {
             'url' : url,
             'method' : method,
-            'cache' : false,
+            'cache' : false
         };
 
         if (data != null) {
@@ -114,7 +114,7 @@ $(document).ready(function(){
         $dialog.on('hidden.bs.modal', function (e) {
             $(this).remove();
         });
-        get_content($dialog, $button, url, "GET");
+        get_content($dialog, $button, url, "GET", null);
     });
 
     $(".popup-view-btn-clear").on("click", function(){

@@ -6,7 +6,7 @@ from .exceptions import (
 )
 
 
-class RegistryPopupViwe(object):
+class RegistryPopupView(object):
 
     def __init__(self):
         self._registry = {}
@@ -29,6 +29,10 @@ class RegistryPopupViwe(object):
             raise PopupViewNotRegistered('Popup View {0} not registered'.format(view_class_name))
         self._registry.pop(view_class_name, None)
 
+    def unregister_by_name(self, view_class_name):
+        view_class = self.get(view_class_name)
+        self.unregister(view_class)
+
     def get(self, view_class_name):
         view_class = self._registry.get(view_class_name, None)
         if view_class is None:
@@ -37,4 +41,4 @@ class RegistryPopupViwe(object):
             return view_class
 
 
-registry_popup_view = RegistryPopupViwe()
+registry_popup_view = RegistryPopupView()

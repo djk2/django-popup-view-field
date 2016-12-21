@@ -22,5 +22,4 @@ def django_popup_view_field_javascript():
         {% django_popup_view_field_javascript %}
     """
     temp = loader.get_template('django_popup_view_field/scripts_include.html')
-    context = Context({})
-    return temp.render(context)
+    return temp.render({})

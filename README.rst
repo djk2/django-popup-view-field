@@ -21,6 +21,17 @@ You can create normal djagno View and load this view in dialog for form field.
     * EN - (english)
     * PL - (polish)
 
+- Tested on browsers:
+
+    * OK - Firefox 50.1.0 - Ubuntu 14.04
+    * OK - Firefox 31.1 - CentOS 6.4
+    * OK - Chromium 53.0 - Ubuntu 14.04
+    * OK - Microsoft Edge 38 - Windows 10
+    * OK - Internet Explorer 11.0 - Windows 10
+    * OK - Internet Explorer 10.0 - Windows 7
+    * OK - Internet Explorer 9.0 - Windows 7
+    * ER - Internet Explorer <= 8 (no support "html()" for data-popup-view-value in popups)
+
 
 Screenshots
 ------------
@@ -49,14 +60,13 @@ Screenshots
     :alt: Dialog with form
 
 
-
 Run demo
 ---------
 1. Clone or download repository:
 
     git clone https://github.com/djk2/django-popup-view-field.git
 
-2. Create your virtualenv (red more: http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+2. Create your virtualenv (red more: http://docs.python-guide.org/en/latest/dev/virtualenvs/):
 
 3. Install requirements for demo:
 
@@ -74,10 +84,8 @@ Run demo
 
 
 
-
 Warnig
 ------
 **Project is not finished yet. The first full version will be available after 25 December 2016**
-Currently application works fine but I must write documentation and tests.
+Currently application works fine but I must write documentation.
 If you realy wont use this code, please see demo and evrything will be clear.
-
