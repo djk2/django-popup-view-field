@@ -3,6 +3,9 @@ from django.views.i18n import JavaScriptCatalog
 from .views import GetPopupView
 
 
+app_name = 'django_popup_view_field'
+
+
 urlpatterns = [
     url(
         r'^jsi18n/$',
