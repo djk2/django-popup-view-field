@@ -20,7 +20,7 @@ class TemplatetagsTest(TestCase):
 
         self.assertInHTML('''<script type="text/javascript" src="/django_popup_view_field/jsi18n/"></script>''', html)
         self.assertInHTML('''
-            <script type="text/javascript" src="/static/django_popup_view_field/js/django_popup_view_field.js">
+            <script type="text/javascript" src="/static/django_popup_view_field/js/django_popup_view_field.min.js">
             </script>
         ''', html)
         assert html.find('''id="template-django-popup-view-field"''') != -1
