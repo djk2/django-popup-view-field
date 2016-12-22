@@ -28,7 +28,16 @@ class FieldTest(TestCase):
 
         form = Form()
         html = form.as_p()
-        self.assertInHTML('''<input  id="id_popup_view_field" name="popup_view_field" type="text" required/>''', html)
+
+        self.assertInHTML('''
+            <input
+            id="id_popup_view_field"
+            name="popup_view_field"
+            type="text"
+            class="form-control"
+            required/>
+        ''', html)
+
         assert html.find('''class="input-group-addon btn popup-view-btn-load"''') != -1
         assert html.find('''data-target="id_popup_view_field"''') != -1
         assert html.find('''data-popup-dialog-title="Popup Dialog: Select value"''') != -1
