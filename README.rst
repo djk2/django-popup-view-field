@@ -1,6 +1,21 @@
 django-popup-view-field
 ------------------------
 
+.. image:: https://badge.fury.io/py/django-popup-view-field.svg
+    :target: https://badge.fury.io/py/django-popup-view-field
+    :alt: Latest PyPI version
+
+
+.. image:: https://travis-ci.org/djk2/django-popup-view-field.svg?branch=master
+    :target: https://travis-ci.org/djk2/django-popup-view-field
+    :alt: Travis CI
+
+
+.. image:: https://requires.io/github/djk2/django-popup-view-field/requirements.svg?branch=master
+    :target: https://requires.io/github/djk2/django-popup-view-field/requirements/?branch=master
+    :alt: Requirements Status
+
+
 Field and widget can render bootstrap dialog with content from django view.
 You can create normal django View and load this view in dialog for form field.
 
@@ -44,22 +59,22 @@ Screenshots
 
 - Example: Form with several popup-view-fieds
 
-.. image:: doc/static/scr1.png
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/scr1.png
     :alt: Form with django-popup-view-fieds
 
 - Example: Dialog for select sex
 
-.. image:: doc/static/scr2.png
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/scr2.png
     :alt: Dialog for select sex
 
 - Example: Dialog for select color
 
-.. image:: doc/static/scr3.png
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/scr3.png
     :alt: Dialog for select color
 
 - Example: Dialog with form
 
-.. image:: doc/static/scr4.png
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/scr4.png
     :alt: Dialog with form
 
 
@@ -183,7 +198,7 @@ Tag should be append before body close </body> tag and after jQuery and Bootstra
 Simple Example
 ------------------------
 
-.. image:: doc/static/simple_example.png
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/simple_example.png
     :alt: Simple Example - screenshot
 
 
@@ -330,7 +345,7 @@ Advanced Example
 
 Advanced Example use django-bootstrap3. Dialog is interactive, all links and forms will be send via Ajax and response will be loaded in dialog.
 
-.. image:: doc/static/advanced_example.png
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/advanced_example.png
     :alt: Advanced Example - screenshot
 
 
