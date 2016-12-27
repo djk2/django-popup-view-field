@@ -3,7 +3,10 @@ from django.test import TestCase
 from django_popup_view_field.fields import PopupViewField
 from django.forms.fields import CharField
 from django.views.generic import View
-from django import forms
+from django import (
+    forms,
+    VERSION,
+)
 
 
 class FieldTest(TestCase):
@@ -29,15 +32,23 @@ class FieldTest(TestCase):
         form = Form()
         html = form.as_p()
 
-        self.assertInHTML('''
+        # Patch for django 1.10
+        # In dj 1.10 required attribut is
+        # added to input
+        required = ""
+        if VERSION >= (1, 10):
+            required = "required"
+
+        expected_html = '''
             <input
             id="id_popup_view_field"
             name="popup_view_field"
             type="text"
             class="form-control"
-            required/>
-        ''', html)
+            {required}/>
+        '''.format(required=required)
 
+        self.assertInHTML(expected_html, html)
         assert html.find('''class="input-group-addon btn popup-view-btn-load"''') != -1
         assert html.find('''data-target="id_popup_view_field"''') != -1
         assert html.find('''data-popup-dialog-title="Popup Dialog: Select value"''') != -1

@@ -30,7 +30,7 @@ class PopupViewWidget(forms.TextInput):
         final_attrs = self.build_attrs(attrs, type=self.input_type, name=name)
 
         # Add to input css class 'form-control'
-        css_class = final_attrs.get("class","").split()
+        css_class = final_attrs.get("class", "").split()
         if "form-control" not in css_class:
             css_class.append("form-control")
         css_class = " ".join(css_class)
