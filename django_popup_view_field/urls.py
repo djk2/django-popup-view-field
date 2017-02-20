@@ -1,4 +1,6 @@
+from django import VERSION
 from django.conf.urls import url
+
 from .views import GetPopupView
 
 """
@@ -7,7 +9,6 @@ so for older version django import view as function
 and for django >= 1.10 I use view class
 """
 
-from django import VERSION
 if VERSION < (1, 10):
     from django.views.i18n import javascript_catalog
 else:

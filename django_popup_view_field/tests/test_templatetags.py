@@ -1,9 +1,6 @@
 # encoding: utf-8
+from django.template import Context, engines
 from django.test import TestCase
-from django.template import (
-    engines,
-    Context
-)
 
 
 class TemplatetagsTest(TestCase):

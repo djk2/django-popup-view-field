@@ -1,9 +1,7 @@
 # encoding: utf-8
-from django.conf.urls import url, include
-from .views import (
-    View1,
-)
+from django.conf.urls import include, url
 
+from .views import View1
 
 urlpatterns = [
 

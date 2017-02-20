@@ -1,13 +1,13 @@
 # encoding: utf-8
-from django_popup_view_field.registry import registry_popup_view
-from django.views.generic import View
 from django.test import TestCase
+from django.views.generic import View
 
 from django_popup_view_field.exceptions import (
-    PopupViewIsNotSubclassView,
     PopupViewAlreadyRegistered,
+    PopupViewIsNotSubclassView,
     PopupViewNotRegistered,
 )
+from django_popup_view_field.registry import registry_popup_view
 
 
 class RegistryTest(TestCase):

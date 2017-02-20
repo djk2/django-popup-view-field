@@ -1,5 +1,6 @@
-from django.views.generic import View
 from django.http import Http404
+from django.views.generic import View
+
 from .registry import registry_popup_view
 
 

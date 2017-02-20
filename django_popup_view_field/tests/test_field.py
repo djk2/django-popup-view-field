@@ -1,12 +1,10 @@
 # encoding: utf-8
-from django.test import TestCase
-from django_popup_view_field.fields import PopupViewField
+from django import VERSION, forms
 from django.forms.fields import CharField
+from django.test import TestCase
 from django.views.generic import View
-from django import (
-    forms,
-    VERSION,
-)
+
+from django_popup_view_field.fields import PopupViewField
 
 
 class FieldTest(TestCase):

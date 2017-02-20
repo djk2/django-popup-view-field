@@ -1,10 +1,6 @@
 # encoding: utf-8
 import django
-
-from django.test import (
-    TestCase,
-    Client,
-)
+from django.test import Client, TestCase
 
 if django.VERSION < (1, 10):
     from django.core.urlresolvers import reverse

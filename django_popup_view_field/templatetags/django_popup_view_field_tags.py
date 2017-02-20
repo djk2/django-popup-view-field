@@ -1,10 +1,5 @@
+from django.template import Context, Library, loader
 from django.utils.safestring import mark_safe
-from django.template import (
-    loader,
-    Library,
-    Context
-)
-
 
 register = Library()
 

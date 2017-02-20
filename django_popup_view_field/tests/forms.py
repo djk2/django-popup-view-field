@@ -1,6 +1,8 @@
 # encoding: utf-8
-from django_popup_view_field.fields import PopupViewField
 from django import forms
+
+from django_popup_view_field.fields import PopupViewField
+
 from .popups import PopupView1
 
 

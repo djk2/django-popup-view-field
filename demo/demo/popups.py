@@ -1,11 +1,11 @@
-from django.views.generic import (
-    TemplateView,
-    FormView,
-)
-from django.http import HttpResponse
-from django_popup_view_field.registry import registry_popup_view
-from django import forms
 from string import ascii_uppercase
+
+from django import forms
+from django.http import HttpResponse
+from django.views.generic import FormView, TemplateView
+
+from django_popup_view_field.registry import registry_popup_view
+
 from .models import Country
 
 

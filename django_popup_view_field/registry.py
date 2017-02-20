@@ -1,8 +1,9 @@
 from django.views.generic import View
+
 from .exceptions import (
     PopupViewAlreadyRegistered,
-    PopupViewNotRegistered,
     PopupViewIsNotSubclassView,
+    PopupViewNotRegistered,
 )
 
 

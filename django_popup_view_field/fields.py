@@ -1,8 +1,9 @@
 from django.forms.fields import CharField
-from django.views.generic import View
 from django.utils.translation import ugettext_lazy as _
-from .widgets import PopupViewWidget
+from django.views.generic import View
+
 from .exceptions import PopupViewIsNotSubclassView
+from .widgets import PopupViewWidget
 
 
 class PopupViewField(CharField):
