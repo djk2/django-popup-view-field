@@ -1,6 +1,7 @@
-Django>=1.10.5
+Django==1.10.5
 tox>=2.5.0
-twine
-flake8
 django-bootstrap3
 django-crispy-forms
+twine
+flake8
+isort
