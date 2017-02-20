@@ -1,5 +1,6 @@
 # encoding:utf-8
 from setuptools import setup, find_packages
+from django_popup_view_field import __version__ as version
 
 
 def readme():
@@ -9,7 +10,7 @@ def readme():
 
 setup(
     name='django-popup-view-field',
-    version='0.1',
+    version=version,
     description='Field and widget can render bootstrap dialog window with content from django view',
     url='https://github.com/djk2/django-popup-view-field',
     author='Grzegorz Tężycki',

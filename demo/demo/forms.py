@@ -1,7 +1,7 @@
 from crispy_forms.helper import FormHelper
 from django import forms
 
-from django_popup_view_field import PopupViewField
+from django_popup_view_field.fields import PopupViewField
 
 from .popups import ColorPopupView, CountryPopupView, SexPopupView
 

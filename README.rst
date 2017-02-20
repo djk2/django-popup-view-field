@@ -267,7 +267,7 @@ Create Form with PopupViewField
 *forms.py* ::
 
     from django import forms
-    from django_popup_view_field import PopupViewField
+    from django_popup_view_field.fields import PopupViewField
     from myapp.popups import ColorsPopupView
 
     class ColorForm(forms.Form):
@@ -398,7 +398,7 @@ Form with PopupViewField
 *forms.py* ::
 
     from django import forms
-    from django_popup_view_field import PopupViewField
+    from django_popup_view_field.fields import PopupViewField
     from myapp.popups import AlphabetPopupView
 
     class AlphabetForm(forms.Form):

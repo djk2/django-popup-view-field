@@ -1,7 +1,2 @@
-# encoding: utf-8
-from .fields import PopupViewField
-
-
-__version__ = "0.1"
-
-VERSION = __version__
+VERSION = (0, 2, 0)
+__version__ = ".".join(str(i) for i in VERSION)

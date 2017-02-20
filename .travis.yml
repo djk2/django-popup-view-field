@@ -9,20 +9,29 @@ env:
     - TOXENV=py27-dj_1.9-bootstrap_7.1.0-crispy_1.6.1-tests
     - TOXENV=py27-dj_1.9-bootstrap_7.0.0-crispy_1.6.0-tests
     - TOXENV=py27-dj_1.9-bootstrap_7.0.0-crispy_1.6.1-tests
+    - TOXENV=py27-dj_1.9-bootstrap_8.1.0-crispy_1.6.0-tests
+    - TOXENV=py27-dj_1.9-bootstrap_8.1.0-crispy_1.6.1-tests
     - TOXENV=py34-dj_1.9-bootstrap_7.1.0-crispy_1.6.0-tests
     - TOXENV=py34-dj_1.9-bootstrap_7.1.0-crispy_1.6.1-tests
     - TOXENV=py34-dj_1.9-bootstrap_7.0.0-crispy_1.6.0-tests
     - TOXENV=py34-dj_1.9-bootstrap_7.0.0-crispy_1.6.1-tests
+    - TOXENV=py34-dj_1.9-bootstrap_8.1.0-crispy_1.6.0-tests
+    - TOXENV=py34-dj_1.9-bootstrap_8.1.0-crispy_1.6.1-tests
     - TOXENV=py27-dj_1.10-bootstrap_7.1.0-crispy_1.6.1-tests
     - TOXENV=py27-dj_1.10-bootstrap_7.1.0-crispy_1.6.1-tests
     - TOXENV=py27-dj_1.10-bootstrap_7.0.0-crispy_1.6.1-tests
     - TOXENV=py27-dj_1.10-bootstrap_7.0.0-crispy_1.6.1-tests
+    - TOXENV=py27-dj_1.10-bootstrap_8.1.0-crispy_1.6.1-tests
+    - TOXENV=py27-dj_1.10-bootstrap_8.1.0-crispy_1.6.1-tests
     - TOXENV=py34-dj_1.10-bootstrap_7.1.0-crispy_1.6.1-tests
     - TOXENV=py34-dj_1.10-bootstrap_7.1.0-crispy_1.6.1-tests
     - TOXENV=py34-dj_1.10-bootstrap_7.0.0-crispy_1.6.1-tests
     - TOXENV=py34-dj_1.10-bootstrap_7.0.0-crispy_1.6.1-tests
+    - TOXENV=py34-dj_1.10-bootstrap_8.1.0-crispy_1.6.1-tests
+    - TOXENV=py34-dj_1.10-bootstrap_8.1.0-crispy_1.6.1-tests
     - TOXENV=py27-flake
     - TOXENV=py34-flake
+    - TOXENV=py34-isort
 
 install:
     - pip install tox>=2.5.0

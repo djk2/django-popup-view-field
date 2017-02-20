@@ -17,19 +17,19 @@ else:
 app_name = 'django_popup_view_field'
 
 
-urlpatterns = [
-    url(r'^(?P<view_class_name>\w+)/$', GetPopupView.as_view(), name="get_popup_view"),
-]
-
 if VERSION < (1, 10):
-    urlpatterns += [
+    urlpatterns = [
         url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
     ]
 else:
-    urlpatterns += [
+    urlpatterns = [
         url(
             r'^jsi18n/$',
             JavaScriptCatalog.as_view(),
             name='javascript-catalog'
         )
     ]
+
+urlpatterns += [
+    url(r'^(?P<view_class_name>\w+)/$', GetPopupView.as_view(), name="get_popup_view"),
+]
