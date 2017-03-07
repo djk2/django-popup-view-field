@@ -22,7 +22,7 @@ You can create normal django View and load this view in dialog for form field.
 - Support:
 
     * Python: 2.7, 3.4
-    * Django: 1.8, 1.9, 1.10
+    * Django: 1.8, 1.9, 1.10, 1.11
     * django-crispy-forms
     * django-bootstrap3
 
