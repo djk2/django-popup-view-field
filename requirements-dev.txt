@@ -1,4 +1,4 @@
-Django==1.10.5
+Django==1.11b1
 tox>=2.5.0
 django-bootstrap3
 django-crispy-forms

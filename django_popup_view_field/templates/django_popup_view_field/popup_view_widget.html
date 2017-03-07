@@ -1,0 +1,29 @@
+{% spaceless %}
+<div class="input-group">
+    <input
+        type="{{ widget.type }}"
+        name="{{ widget.name }}"
+        {% if widget.value != None and widget.value != "" %}
+            value="{{ widget.value }}"
+        {% endif %}
+        {% for name, value in widget.attrs.items %}
+            {% if value != False %}
+                {{ name }}{% if value != True %}="{{ value }}"{% endif %}
+            {% endif %}
+        {% endfor %}
+    />
+
+    <div class="input-group-addon btn popup-view-btn-clear" data-target="{{ widget.attrs.id }}">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </div>
+
+    <div
+        class="input-group-addon btn popup-view-btn-load"
+        data-target="{{ widget.attrs.id }}"
+        data-popup-dialog-title="{{ widget.popup_dialog_title }}"
+        data-url = "{{ widget.url }}"
+    >
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </div>
+</div>
+{% endspaceless %}

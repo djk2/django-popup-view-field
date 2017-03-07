@@ -29,8 +29,6 @@ class View1Test(BaseViewTest):
     def test_get_response(self):
         response = self.client.get(self.url)
         html = response.content.decode("utf-8")
-        # print("*******************")
-        # print(html)
         self.assertTrue(response.context['form'] is not None)
         self.assertInHTML("<title>View 1</title>", html)
         assert html.find('''class="input-group-addon btn popup-view-btn-load"''') != -1
