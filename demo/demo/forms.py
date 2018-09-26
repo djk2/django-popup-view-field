@@ -10,27 +10,18 @@ class DemoForm(forms.Form):
 
     name = forms.CharField(label="Name")
 
+    sex = PopupViewField(
+        # Attrs for popup
+        view_class=SexPopupView,
+        popup_dialog_title='What is your SEX',
+        # Attr for CharField
+        required=True,
+        help_text='female or male'
+    )
+
+    color = PopupViewField(view_class=ColorPopupView)
+    country_code = PopupViewField(view_class=CountryPopupView)
 
     def __init__(self, *args, **kwargs):
-        bootstrap_version = kwargs.pop("bootstrap_version")
         super(DemoForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-
-        self.fields['sex'] = PopupViewField(
-            # Attrs for popup
-            view_class=SexPopupView,
-            popup_dialog_title='What is your SEX',
-            bootstrap_version=bootstrap_version,
-            # Attr for CharField
-            required=True,
-            help_text='female or male'
-        )
-
-        self.fields['color'] = PopupViewField(
-            view_class=ColorPopupView,
-            bootstrap_version=bootstrap_version
-        )
-        self.fields['country_code'] = PopupViewField(
-            view_class=CountryPopupView,
-            bootstrap_version=bootstrap_version
-        )

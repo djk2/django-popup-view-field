@@ -40,7 +40,6 @@ INSTALLED_APPS = [
 
     # Require
     'bootstrap3',
-    'bootstrap4',
     'crispy_forms',
 
     # Added extra
