@@ -4,6 +4,7 @@ from django.views.generic import View
 
 from .exceptions import PopupViewIsNotSubclassView
 from .widgets import PopupViewWidget
+import urllib
 
 
 class PopupViewField(CharField):
@@ -21,10 +22,19 @@ class PopupViewField(CharField):
         view_class_name = view_class.__name__
         popup_dialog_title = kwargs.pop("popup_dialog_title", _("Popup Dialog: Select value"))
 
+        callback_data = kwargs.pop("callback_data", {})
+        if not isinstance(callback_data, dict):
+            raise AttributeError("callback_data argument must be a dictionary")
+        try:
+            callback_data = urllib.urlencode(callback_data)
+        except AttributeError:
+            callback_data = urllib.parse.urlencode(callback_data)
+
         super(PopupViewField, self).__init__(
             widget=PopupViewWidget(
                 view_class_name=view_class_name,
-                popup_dialog_title=popup_dialog_title
+                popup_dialog_title=popup_dialog_title,
+                callback_data=callback_data
             ),
             *args,
             **kwargs

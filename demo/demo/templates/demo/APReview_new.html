@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+{% load django_popup_view_field_tags %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% for hidden_field in form.hidden_fields %}
+        {% endfor %}
+
+        {% csrf_token %}
+        {{ form.management_form }}
+        {{ form.non_form_errors }}
+        {{form.as_p}}
+        <input class="btn" type="submit" value="Update" />
+    </form>
+{% endblock content %}

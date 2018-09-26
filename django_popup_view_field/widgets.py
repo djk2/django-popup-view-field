@@ -17,9 +17,10 @@ class PopupViewWidget(forms.TextInput):
 
     template_name = 'django_popup_view_field/popup_view_widget.html'
 
-    def __init__(self, view_class_name, popup_dialog_title, attrs=None):
+    def __init__(self, view_class_name, popup_dialog_title, callback_data, attrs=None):
         self.view_class_name = view_class_name
         self.popup_dialog_title = popup_dialog_title
+        self.callback_data = callback_data
 
         # compability for Django v1.11
         if attrs is not None:
@@ -31,7 +32,10 @@ class PopupViewWidget(forms.TextInput):
     def get_view_url(self):
         """Return url for ajax to view for render dialog content"""
         url = reverse("django_popup_view_field:get_popup_view", args=(self.view_class_name,))
-        return url
+        return "{url}?{cd}".format(
+            url=url,
+            cd=self.callback_data
+        )
 
     def get_context(self, name, value, attrs=None):
 
