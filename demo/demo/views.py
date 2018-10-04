@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import CreateView, TemplateView
 
-from .forms import DemoForm, APReviewForm
+from .forms import DemoForm
 
 
 class Index(TemplateView):
@@ -35,9 +35,3 @@ class Index(TemplateView):
         context["form_2"] = self.form_2
         context["form_3"] = self.form_3
         return context
-
-
-class APReviewCreateView(CreateView):
-    form_class = APReviewForm
-    template_name = 'demo/APReview_new.html'
-    success_url = 'success'

@@ -1,10 +1,11 @@
+import urllib
+
 from django.forms.fields import CharField
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import View
 
 from .exceptions import PopupViewIsNotSubclassView
 from .widgets import PopupViewWidget
-import urllib
 
 
 class PopupViewField(CharField):

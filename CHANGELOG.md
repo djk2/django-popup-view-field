@@ -1,5 +1,9 @@
 # CHANGELOG for django-popup-view-field
 
+## 0.4.0 (2018-10-04)
+
+* Added `callback_data` attribute to PopupViewField (read more in README)
+
 ## 0.3.0 (2017-03-07)
 
 * Support for Django 1.11

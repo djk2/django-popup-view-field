@@ -2,11 +2,11 @@ from string import ascii_uppercase
 
 from django import forms
 from django.http import HttpResponse
-from django.views.generic import FormView, TemplateView, DetailView
-from django.shortcuts import get_object_or_404
+from django.views.generic import FormView, TemplateView
+
 from django_popup_view_field.registry import registry_popup_view
 
-from .models import Country, AP
+from .models import Country
 
 
 class SexPopupView(TemplateView):
@@ -41,26 +41,7 @@ class CountryPopupView(TemplateView):
         return context
 
 
-class SelectionReasonPopUpViews(DetailView):
-    template_name = 'popups/selectionReason.html'
-    model = AP
-    context_object_name = 'attackpattern'
-
-    def get(self, request, *args, **kwargs):
-        return super(SelectionReasonPopUpViews, self).get(request, *args, **kwargs)
-
-    def get_object(self):
-        #I would like to pass the APiD of AP to myID
-        #This should just get a specific AP based on the myID value
-        my_id = self.request.GET.get("my_id")
-        other_param = self.request.GET.get("other_param")
-        obj = get_object_or_404(AP, APid=my_id)
-        return obj
-
-
-
 # Register popup views
 registry_popup_view.register(SexPopupView)
 registry_popup_view.register(ColorPopupView)
 registry_popup_view.register(CountryPopupView)
-registry_popup_view.register(SelectionReasonPopUpViews)
