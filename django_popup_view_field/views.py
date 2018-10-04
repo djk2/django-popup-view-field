@@ -12,4 +12,4 @@ class GetPopupView(View):
             raise ValueError("view_class_name must be pass")
         else:
             view_class = registry_popup_view.get(view_class_name)
-            return view_class.as_view()(request=request, **kwargs)
+            return view_class.as_view()(request=request, *args, **kwargs)

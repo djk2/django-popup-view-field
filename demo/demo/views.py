@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import CreateView, TemplateView
 
 from .forms import DemoForm
 

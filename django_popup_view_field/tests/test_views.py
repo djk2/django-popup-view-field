@@ -34,7 +34,7 @@ class View1Test(BaseViewTest):
         assert html.find('''class="input-group-addon btn popup-view-btn-load"''') != -1
         assert html.find('''data-target="id_field"''') != -1
         assert html.find('''data-popup-dialog-title="Test PopupView1 Title"''') != -1
-        assert html.find('''data-url = "/django_popup_view_field/PopupView1/"''') != -1
+        assert html.find('''data-url = "/django_popup_view_field/PopupView1/?"''') != -1
 
     def test_post_response(self):
         response = self.client.post(self.url, {"field": "Test Value"})

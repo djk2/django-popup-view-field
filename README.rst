@@ -340,10 +340,49 @@ Create typical FormView
     </form>
 
 
+callback_data attribute
+------------------------
+If you want pass extra parameters to your popup view, you should use `callback_data`
+attribute for PopupViewField. This argument should be dictionary or OrderedDict.
+This dictionary containing yours parameters will be encoded to ASCII text string and
+added to url address. In your popup view You can take this parameters from `request.GET`.
+
+*popups.py* ::
+
+    from django.views.generic import View
+    from django_popup_view_field.registry import registry_popup_view
+
+    class FooPopupView(View):
+        def get(self, request):
+            print(request.GET['extra_param'])  # --> will be "Foo Bar"
+            print(request.GET['my_pk'])        # --> will be 666
+            ....
+
+    # REGISTER IS IMPORTANT
+    registry_popup_view.register(FooPopupView)
+
+*forms.py* ::
+
+    from django import forms
+    from django_popup_view_field.fields import PopupViewField
+
+    class FooForm(forms.Form):
+
+        some_field = PopupViewField(
+            view_class=FooPopupView,
+            callback_data={
+                'extra_param': 'Foo Bar',
+                'my_pk': 666
+            }
+        )
+
+
+
 Advanced Example
 ------------------------
 
-Advanced Example use django-bootstrap3. Dialog is interactive, all links and forms will be send via Ajax and response will be loaded in dialog.
+Advanced Example use django-bootstrap3.
+Dialog is interactive, all links and forms will be send via Ajax and response will be loaded in dialog.
 
 .. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/advanced_example.png
     :alt: Advanced Example - screenshot
@@ -371,7 +410,7 @@ PopupView
         Reverse order
     </a>
 
-*popups.py* ::
+**popups.py* ::
 
     from django.views.generic import TemplateView
     from django_popup_view_field.registry import registry_popup_view
