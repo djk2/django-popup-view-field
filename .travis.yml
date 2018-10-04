@@ -33,7 +33,6 @@ matrix:
         - { python: 3.4, env: TOXENV=py34-dj_1.11-bootstrap_8.2-crispy_1.6-tests }
         - { python: 2.7, env: TOXENV=py27-flake }
         - { python: 3.4, env: TOXENV=py34-flake }
-        - { python: 3.4, env: TOXENV=py34-isort }
 
     allow_failures:
         - env: TOXENV=py27-dj_1.11-bootstrap_8.2-crispy_1.6-tests
