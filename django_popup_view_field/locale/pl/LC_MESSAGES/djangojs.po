@@ -19,6 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: static/django_popup_view_field/js/django_popup_view_field.js:22
+#: static/django_popup_view_field/js/django_popup_view_field.js:100
 msgid "Close"
 msgstr "Zamknij"
+#: static/django_popup_view_field/js/django_popup_view_field.js:99
+msgid "Data is loading ..."
+msgstr "Trwa ładowanie danych ..."
