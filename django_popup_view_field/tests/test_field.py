@@ -69,7 +69,6 @@ class FieldTest(TestCase):
         class Form(forms.Form):
             popup_view_field = PopupViewField(
                 view_class=PopupView,
-                required=True,
                 attrs={'readonly': True}
             )
 
@@ -82,9 +81,9 @@ class FieldTest(TestCase):
             name="popup_view_field"
             type="text"
             class="form-control"
-            required
+            {required}
             readonly/>
-        '''
+        '''.format(required=required)
 
         self.assertInHTML(expected_html, html)
 
