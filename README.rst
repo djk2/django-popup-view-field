@@ -21,7 +21,7 @@ You can create normal django View and load this view in dialog for form field.
 
 - Support:
 
-    * Python: 2.7, 3.4
+    * Python: 2.7, 3.6
     * Django: 1.8, 1.9, 1.10, 1.11
     * django-crispy-forms
     * django-bootstrap3
@@ -44,6 +44,8 @@ You can create normal django View and load this view in dialog for form field.
 
 - Tested on browsers:
 
+    * OK - Google Chrome 70.0 - Fedora 28
+    * OK - Firefox 62.0.3 - Fedora 28
     * OK - Firefox 50.1.0 - Ubuntu 14.04
     * OK - Firefox 31.1 - CentOS 6.4
     * OK - Chromium 53.0 - Ubuntu 14.04
@@ -275,6 +277,7 @@ Create Form with PopupViewField
         color = PopupViewField(
             view_class=ColorsPopupView,
             popup_dialog_title='What is your favorite color',
+            attrs={'readonly': True},
             required=True,
             help_text='be honest'
         )
@@ -283,6 +286,7 @@ Create Form with PopupViewField
 
 * ``view_class`` - **required** - popup view class, view to render dialog content, must be subclass of django.views.generic.View
 * ``popup_dialog_title`` - **not required** - Title for dialog, default ``Popup Dialog: Select value``
+* ``attrs`` - **not required** - provides attributes for Widget
 * ``args`` and ``kwargs`` are default for CharField
 
 

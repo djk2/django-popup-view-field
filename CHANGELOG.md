@@ -1,5 +1,9 @@
 # CHANGELOG for django-popup-view-field
 
+## 0.4.1 (2019-02-23)
+
+* Added `attrs` attribute to PopupViewField which is passed to the Widget
+
 ## 0.4.0 (2018-10-04)
 
 * Added `callback_data` attribute to PopupViewField (read more in README)

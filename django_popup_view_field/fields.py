@@ -10,7 +10,7 @@ from .widgets import PopupViewWidget
 
 class PopupViewField(CharField):
 
-    def __init__(self, view_class, *args, **kwargs):
+    def __init__(self, view_class, attrs=None, *args, **kwargs):
         """
         view_class : View Class used to render content popup dialog
         view_class must be subclass of django.views.generic.View
@@ -35,7 +35,8 @@ class PopupViewField(CharField):
             widget=PopupViewWidget(
                 view_class_name=view_class_name,
                 popup_dialog_title=popup_dialog_title,
-                callback_data=callback_data
+                callback_data=callback_data,
+                attrs=attrs
             ),
             *args,
             **kwargs

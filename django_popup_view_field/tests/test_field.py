@@ -66,6 +66,36 @@ class FieldTest(TestCase):
         assert html.find('''data-popup-dialog-title="Foo Bar Title Window"''') != -1
         self.assertInHTML('''<span class="helptext">Test help text</span>''', html)
 
+    def test_readonly_field(self):
+
+        class PopupView(View):
+            pass
+
+        required = ""
+        if VERSION >= (1, 10):
+            required = "required"
+
+        class Form(forms.Form):
+            popup_view_field = PopupViewField(
+                view_class=PopupView,
+                attrs={'readonly': True}
+            )
+
+        form = Form()
+        html = form.as_p()
+
+        expected_html = '''
+            <input
+            id="id_popup_view_field"
+            name="popup_view_field"
+            type="text"
+            class="form-control"
+            {required}
+            readonly/>
+        '''.format(required=required)
+
+        self.assertInHTML(expected_html, html)
+
     def test_callback_data_type_error(self):
 
         class PopupView(View):
