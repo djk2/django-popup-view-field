@@ -1,5 +1,11 @@
 # CHANGELOG for django-popup-view-field
 
+## 0.5.0 (2019-04-17)
+
+* Support for Django 2.0 and 2.1
+
+* Added PopupViewModelField that returns a model instance instead of text
+
 ## 0.4.1 (2019-02-23)
 
 * Added `attrs` attribute to PopupViewField which is passed to the Widget
