@@ -22,7 +22,7 @@ You can create normal django View and load this view in dialog for form field.
 - Support:
 
     * Python: 2.7, 3.6
-    * Django: 1.8, 1.9, 1.10, 1.11
+    * Django: 1.8, 1.9, 1.10, 1.11, 2.0, 2.1
     * django-crispy-forms
     * django-bootstrap3
 
@@ -59,10 +59,10 @@ You can create normal django View and load this view in dialog for form field.
 Screenshots
 ------------
 
-- Example: Form with several popup-view-fieds
+- Example: Form with several popup-view-fields
 
 .. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/scr1.png
-    :alt: Form with django-popup-view-fieds
+    :alt: Form with django-popup-view-fields
 
 - Example: Dialog for select sex
 
@@ -170,7 +170,7 @@ Add the django_popup_view_field urls to your root url patterns
 In your base template, add ``django_popup_view_field_javascript`` tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ``django_popup_view_field_javascript`` template tag load all required javascripts and
-template-scripst for application.
+template-scripts for application.
 Tag should be append before body close </body> tag and after jQuery and Bootstrap scripts.
 
 *base.html* ::
@@ -414,7 +414,7 @@ PopupView
         Reverse order
     </a>
 
-**popups.py* ::
+*popups.py* ::
 
     from django.views.generic import TemplateView
     from django_popup_view_field.registry import registry_popup_view
@@ -475,8 +475,129 @@ View
         form_class = AlphabetForm
 
         def form_valid(self, form):
-            char = form.cleande_data.get("char")
+            char = form.cleaned_data.get("char")
             return HttpResponse("First letter of your name : {0}".format(char))
+
+
+PopupViewModelField Example
+-----------------------------
+``PopupViewModelField`` allows you to send model objects through the form inheriting from ``ModelForm``.
+
+.. image:: https://raw.githubusercontent.com/djk2/django-popup-view-field/master/doc/static/PopupViewModelField_example.png
+    :alt: PopupViewModelField Example - screenshot
+
+
+Model
+^^^^^^^
+*models.py* ::
+
+    from django.db import models
+
+
+    class Country(models.Model):
+        code = models.CharField(max_length=2, primary_key=True)
+        name = models.CharField(max_length=256)
+
+
+    class ExampleUser(models.Model):
+        first_name = models.CharField(max_length=30)
+        last_name = models.CharField(max_length=30)
+        country_code = models.ForeignKey(Country, on_delete=models.PROTECT)
+
+
+PopupView
+^^^^^^^^^^
+*templates/myapp/popups/country.html* ::
+
+    <ul>
+        {% for country in countries %}
+            <li style="cursor:pointer" data-popup-view-value="{{ country.code }}">
+                <strong>{{ country.code }}</strong> - {{ country.name }}
+            </li>
+        {% endfor %}
+    <ul>
+
+**Note:**
+ ``data-popup-view-value`` attribute should return the primary key value of the model object.
+
+*popups.py* ::
+
+    class CountryPopupView(TemplateView):
+
+    template_name = "myapp/popups/country.html"
+    countries = None
+
+    def get(self, request, *args, **kwargs):
+        self.countries = Country.objects.all()
+        return super(CountryPopupView, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(CountryPopupView, self).get_context_data(**kwargs)
+        context['countries'] = self.countries
+        return context
+
+    # REGISTER IS IMPORTANT
+    registry_popup_view.register(CountryPopupView)
+
+
+Form with PopupViewModelField
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*forms.py* ::
+
+    from django import forms
+    from django.forms import ModelForm
+    from .models import Country, ExampleUser
+    from django_popup_view_field.fields import PopupViewModelField
+
+    class CountryForm(ModelForm):
+
+        country_code = PopupViewModelField(
+            queryset=Country.objects.all(),
+            view_class=CountryPopupView,
+            required=True
+        )
+
+        class Meta:
+            model = ExampleUser
+            fields = ('first_name', 'last_name', 'country_code')
+
+**Note:**
+ ``PopupViewModelField`` must have an additional ``queryset`` argument in which we pass model objects.
+
+
+View
+^^^^^
+*templates/myapp/country.html* ::
+
+    {% extends "base.html" %}
+    {% load bootstrap3 %}
+
+    <form action="." method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+    </form>
+
+*views.py* ::
+
+    from django.views.generic import FormView
+    from myapp.forms import CountryForm
+    from django.contrib import messages
+
+    class CountryFormView(FormView):
+        template_name = "myapp/country.html"
+        form_class = CountryForm
+
+        def form_valid(self, form):
+            ret = super(CountryFormView, self).form_valid(form)
+            country_code = form.cleaned_data.get("country_code")
+            messages.success(
+                self.request,
+                "Success in create example user with code of country: {0}".format(country_code)
+            )
+            return ret
 
 
 Others

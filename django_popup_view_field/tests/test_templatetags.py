@@ -1,5 +1,5 @@
 # encoding: utf-8
-from django.template import Context, engines
+from django.template import engines
 from django.test import TestCase
 
 
