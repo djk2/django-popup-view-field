@@ -1,9 +1,7 @@
 import django
 from django import forms
-from django.forms.utils import flatatt
 from django.template import loader
 from django.utils.encoding import force_text
-from django.utils.html import format_html
 
 try:
     from django.urls import reverse

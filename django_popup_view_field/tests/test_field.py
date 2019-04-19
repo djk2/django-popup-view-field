@@ -2,17 +2,19 @@
 from collections import OrderedDict
 
 from django import VERSION, forms
+from django.forms import ModelChoiceField
 from django.forms.fields import CharField
 from django.test import TestCase
 from django.views.generic import View
 
-from django_popup_view_field.fields import PopupViewField
+from django_popup_view_field.fields import PopupViewField, PopupViewFieldMixin, PopupViewModelField
 
 
 class FieldTest(TestCase):
 
     def test_subclass_field(self):
-        assert issubclass(PopupViewField, CharField) is True
+        assert issubclass(PopupViewField, (CharField, PopupViewFieldMixin)) is True
+        assert issubclass(PopupViewModelField, (ModelChoiceField, PopupViewFieldMixin)) is True
 
     def test_form(self):
 
