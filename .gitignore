@@ -13,7 +13,6 @@ eggs/
 *.pyc
 *.egg-info/
 *.egg
-*.mo
 *.pot
 *.log
 *.sqlite3
