@@ -13,6 +13,7 @@ setup(
     name='django-popup-view-field',
     version=version,
     description='Field and widget can render bootstrap dialog window with content from django view',
+    long_description_content_type="text/markdown",
     url='https://github.com/djk2/django-popup-view-field',
     author='Grzegorz Tężycki',
     author_email='grzegorz.tezycki@gmail.com',
