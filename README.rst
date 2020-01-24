@@ -22,19 +22,20 @@ You can create normal django View and load this view in dialog for form field.
 - Support:
 
     * Python: 2.7, 3.6
-    * Django: 1.8, 1.9, 1.10, 1.11, 2.0, 2.1
+    * Django: 1.9, 1.10, 1.11, 2.0, 2.1
     * django-crispy-forms
     * django-bootstrap3
+    * django-bootstrap4 (!Only for Django >= 2.1)
 
 - Require:
 
     * Django
-    * bootstrap3
+    * bootstrap3 or bootstrap4
     * JQuery
 
 - Recommended:
 
-    * django-bootstrap3 or
+    * django-bootstrap3 or django-bootstrap4
     * django-crispy-forms
 
 - Locale:
@@ -44,6 +45,8 @@ You can create normal django View and load this view in dialog for form field.
 
 - Tested on browsers:
 
+    * OK - Chromium 79.0.3945.79 - Ubuntu 18.04
+    * OK - Firefox 72.0.1 (64 bity) - Ubuntu 18.04
     * OK - Google Chrome 70.0 - Fedora 28
     * OK - Firefox 62.0.3 - Fedora 28
     * OK - Firefox 50.1.0 - Ubuntu 14.04
@@ -142,10 +145,13 @@ Add ``django_popup_view_field`` to your INSTALLED_APPS setting
         ...
     ]
 
+    # If you want use bootstrap4 then uncomment
+    # DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK = 'bootstrap4'
+
 **Warning**:
- Is recommended use django-bootstrap3 or django-crispy-forms
- to render forms and  fields, but this is not necessary.
- You can still write django templates using pure CSS from bootstrap3.
+ Is recommended use django-bootstrap3/django-bootstrap4 or django-crispy-forms
+ to render forms and fields, but this is not necessary.
+ You can still write django templates using pure CSS from bootstrap3/4.
  More information about bootstrap forms in here: http://getbootstrap.com/css/#forms
 
 
@@ -195,6 +201,27 @@ Tag should be append before body close </body> tag and after jQuery and Bootstra
             {% django_popup_view_field_javascript %}
         </body>
     </html>
+
+
+Settings
+----------
+
+DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Since version 0.6.0, django-popup-view-fields has built-in support for bootstrap4 also.
+To enable support for `bootstrap4` you have to set `DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK`
+to "bootstrap4" value.
+
+* `bootstrap3` - this setting will be load javascript and html templates for bootstrap3.
+   **This is a default value**
+
+* `bootstrap4` - this setting will be load javascript and html templates for bootstrap4.
+
+Value of DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK is changing behavior
+of '{% django_popup_view_field_javascript %}' tag and `PopupViewWidget` class.
+Template `scripts_include.html` is using this flag to decide which template
+and javascript will be load. `PopupViewWidget` class is using this flag to decide
+which template for field should be load.
 
 
 Simple Example
@@ -617,5 +644,7 @@ Others
 * More about django-crispy-forms in here : http://django-crispy-forms.readthedocs.io/en/latest/
 
 * More about django-bootstrap3 in here : http://django-bootstrap3.readthedocs.io/en/latest/
+
+* More about django-bootstrap4 in here : https://django-bootstrap4.readthedocs.io/en/latest/
 
 * Documentation prepared with the help of **Online reStructuredText editor** : http://rst.ninjs.org/

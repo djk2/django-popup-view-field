@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+    {% bootstrap_css %}
+{% endblock css %}
+
+{% block content %}
+    <h1> Demo - django-popup-view-field using bootstrap 4 </h1>
+
+    <div>
+
+        <ul class="nav nav-tabs" id="tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="tab-bootstrap" data-toggle="tab" href="#bootstrap" role="tab" aria-controls="home" aria-selected="true">
+                    <span class="glyphicon glyphicon-star"></span>
+                    Form using django-bootstrap4
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" id="tab-crispy" data-toggle="tab" href="#crispy">
+                    <span class="glyphicon glyphicon-star"></span>
+                    Form using Crispy forms + helper
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" id="tab-crispy-helper" data-toggle="tab" href="#crispy-helper">
+                    <span class="glyphicon glyphicon-star"></span>
+                    Form using Crispy forms without helper
+                </a>
+            </li>
+        </ul>
+
+        {# ------------------------------- #}
+        <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="bootstrap" role="tabpanel" aria-labelledby="home-tab">
+                <h4> Render with django-bootstrap4 </h4>
+                <form action="." method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form_1 %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    {% endbuttons %}
+                </form>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="crispy">
+                <h4> Crispy + helper </h4>
+                {% crispy form_2 form_2.helper %}
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="crispy-helper">
+                <h4> Crispy without helper </h4>
+                {% crispy form_3 %}
+            </div>
+
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block javascript %}
+    {% bootstrap_javascript jquery='full'%}
+{% endblock javascript %}
+
+

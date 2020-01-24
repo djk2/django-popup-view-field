@@ -1,0 +1,44 @@
+{% spaceless %}
+
+{% block popup-view-field-widget %}
+<div class="input-group">
+
+    {% block popup-view-field-input %}
+    <input
+        class="form-control"
+        aria-label="popup-view-btn-lab"
+        type="{{ widget.type }}"
+        name="{{ widget.name }}"
+        {% if widget.value != None and widget.value != "" %}
+            value="{{ widget.value }}"
+        {% endif %}
+        {% for name, value in widget.attrs.items %}
+            {% if value != False %}
+                {{ name }}{% if value != True %}="{{ value }}"{% endif %}
+            {% endif %}
+        {% endfor %}
+    />
+    {% endblock popup-view-field-input %}
+
+    {% block popup-view-field-buttons %}
+        <div class="input-group-append popup-view-btn-clear" data-target="{{ widget.attrs.id }}">
+            {% block popup-view-field-button-clear %}
+                <button class="btn btn-outline-secondary popup-view-btn-clear" type="button"> × </button>
+            {% endblock popup-view-field-button-clear %}
+
+            {% block popup-view-field-button-load %}
+                <button
+                    class="btn btn-outline-secondary popup-view-btn-load"
+                    type="button"
+                    data-target="{{ widget.attrs.id }}"
+                    data-popup-dialog-title="{{ widget.popup_dialog_title }}"
+                    data-url = "{{ widget.url }}"
+                > ≡ </button>
+            {% endblock popup-view-field-button-load %}
+        </div>
+    {% endblock popup-view-field-buttons %}
+
+</div>
+{% endblock popup-view-field-widget %}
+
+{% endspaceless %}

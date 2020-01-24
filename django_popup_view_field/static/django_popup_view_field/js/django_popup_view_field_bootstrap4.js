@@ -21,7 +21,7 @@ $(document).ready(function(){
     var bind_events = function($dialog, $button){
         var $dial_body = $dialog.find(".modal-body");
 
-        // Click to evrithing
+        // Click anywhere
         $dial_body.find("*").on("click", function(event){
             var target_id = null, $target = null;
             var $elem = $(this);
@@ -86,35 +86,39 @@ $(document).ready(function(){
             bind_events($dialog, $button);
         });
         request.fail(function(response){
-            $dialog.modal('hide');
+            $dialog.modal('dispose');
             throw new Error("django-popup-view-field - Ajax request to url: " + url);
         });
     };
 
-    var create_dialog = function($button){
-        var dialog_template = $("#template-django-popup-view-field").html();
-        var $dialog_window = $(dialog_template);
-        var dial_id = $dialog_window.attr("id") + dialog_counter;
-        var dial_title = $button.data('popup-dialog-title');
+    var set_dialog = function($button){
+        var $dialog = $("#django-popup-view-field");
         var dial_body = gettext('Data is loading ...');
         var dial_close = gettext('Close');
-        $dialog_window.attr("id", dial_id);
-        $dialog_window.find(".modal-title").html(dial_title);
-        $dialog_window.find(".modal-body").html(dial_body);
-        $dialog_window.find(".modal-footer-close").html(dial_close);
-        dialog_counter++;
-        return $dialog_window;
+        if ($button !== null) {
+            var dial_title = $button.data('popup-dialog-title');
+        } else {
+            dial_title = 'Modal title';
+        }
+        $dialog.find(".modal-title").html(dial_title);
+        $dialog.find(".modal-body").html(dial_body);
+        $dialog.find(".modal-footer-close").html(dial_close);
     };
 
     $(".popup-view-btn-load").on("click", function(){
         var $button = $(this);
-        var $dialog = create_dialog($button);
         var url = get_url($button);
-        $dialog.modal({ backdrop:false });
-        $dialog.on('hidden.bs.modal', function (e) {
-            $(this).remove();
-        });
+        var $dialog = $("#django-popup-view-field");
+        set_dialog($button);
         get_content($dialog, $button, url, "GET", null);
+
+        $dialog.on('hidden.bs.modal', function (e) {
+            $dialog.modal('hide');
+            set_dialog(null);
+        });
+
+        $dialog.modal({});
+
     });
 
     $(".popup-view-btn-clear").on("click", function(){

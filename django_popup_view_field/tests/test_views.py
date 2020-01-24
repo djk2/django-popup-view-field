@@ -1,6 +1,6 @@
 # encoding: utf-8
 import django
-from django.test import Client, TestCase
+from django.test import Client, TestCase, override_settings
 
 if django.VERSION < (1, 10):
     from django.core.urlresolvers import reverse
@@ -26,12 +26,23 @@ class View1Test(BaseViewTest):
         status = response.status_code
         assert status == 200
 
-    def test_get_response(self):
+    def test_get_response_bootstrap3(self):
         response = self.client.get(self.url)
         html = response.content.decode("utf-8")
         self.assertTrue(response.context['form'] is not None)
         self.assertInHTML("<title>View 1</title>", html)
         assert html.find('''class="input-group-addon btn popup-view-btn-load"''') != -1
+        assert html.find('''data-target="id_field"''') != -1
+        assert html.find('''data-popup-dialog-title="Test PopupView1 Title"''') != -1
+        assert html.find('''data-url = "/django_popup_view_field/PopupView1/?"''') != -1
+
+    @override_settings(DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK='bootstrap4')
+    def test_get_response_bootstrap4(self):
+        response = self.client.get(self.url)
+        html = response.content.decode("utf-8")
+        self.assertTrue(response.context['form'] is not None)
+        self.assertInHTML("<title>View 1</title>", html)
+        assert html.find('''class="btn btn-outline-secondary popup-view-btn-load"''') != -1
         assert html.find('''data-target="id_field"''') != -1
         assert html.find('''data-popup-dialog-title="Test PopupView1 Title"''') != -1
         assert html.find('''data-url = "/django_popup_view_field/PopupView1/?"''') != -1
