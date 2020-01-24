@@ -50,3 +50,10 @@ TEMPLATES = [
 LANGUAGE_CODE = 'en-us'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+
+
+MIDDLEWARE = [
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+]

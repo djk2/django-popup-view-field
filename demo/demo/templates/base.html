@@ -1,6 +1,6 @@
 {% load static %}
-{% load bootstrap3 %}
 {% load django_popup_view_field_tags %}
+
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en" }}">
     <head>
@@ -11,7 +11,8 @@
         <title>django-popup-view-field</title>
 
         <!-- Bootstrap core CSS -->
-        {% bootstrap_css %}
+        {% block css %}
+        {% endblock css %}
     </head>
 
     <body>
@@ -21,8 +22,8 @@
         </div>
 
         <!-- Bootstrap core JS -->
-        <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
-        {% bootstrap_javascript %}
+        {% block javascript %}
+        {% endblock javascript%}
 
         {# ! This tag add all js scripts and template scripts to this template ! #}
         {% django_popup_view_field_javascript %}

@@ -1,4 +1,5 @@
-Django==2.1.8
-django-bootstrap3==11.0.0
+Django==2.2.9
+django-bootstrap3==12.0.3
+django-bootstrap4==1.1.1
 django-crispy-forms==1.7.2
 ../.

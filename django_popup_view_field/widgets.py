@@ -2,6 +2,12 @@ import django
 from django import forms
 from django.template import loader
 from django.utils.encoding import force_text
+from django.core.exceptions import ImproperlyConfigured
+
+from django_popup_view_field import SUPPORTED_BOOTSTRAP_VER
+from django_popup_view_field.templatetags.django_popup_view_field_tags import (
+    django_popup_view_field_bootstrap_version
+)
 
 try:
     from django.urls import reverse
@@ -17,7 +23,7 @@ class PopupViewWidget(forms.TextInput):
     second button to call popup dialog
     """
 
-    template_name = 'django_popup_view_field/popup_view_widget.html'
+    template_name = 'django_popup_view_field/popup_view_widget_bootstrap3.html'
 
     def __init__(self, view_class_name, popup_dialog_title, callback_data, attrs=None):
         self.view_class_name = view_class_name
@@ -39,8 +45,27 @@ class PopupViewWidget(forms.TextInput):
             cd=self.callback_data
         )
 
-    def get_context(self, name, value, attrs=None):
+    def get_template_name(self, *args, **kwargs):
+        bootstrap_version = django_popup_view_field_bootstrap_version()
+        if bootstrap_version not in SUPPORTED_BOOTSTRAP_VER:
+            raise ImproperlyConfigured(
+                "incorrect value for "
+                "settings.DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK "
+                "availables values are: {supported}".format(
+                    supported=", ".join(SUPPORTED_BOOTSTRAP_VER)
+                )
+            )
+        self.template_name = (
+            'django_popup_view_field/'
+            'popup_view_widget_{}.html'.format(
+                bootstrap_version
+            )
+        )
+        return self.template_name
 
+    def get_context(self, name, value, attrs=None):
+        # Call to force set correct temlatename
+        template_name = self.get_template_name()
         # For Django >= 1.11
         try:
             context = super(PopupViewWidget, self).get_context(name, value, attrs)
@@ -54,7 +79,7 @@ class PopupViewWidget(forms.TextInput):
                     'is_hidden': self.is_hidden,
                     'type': self.input_type,
                     'attrs': self.build_attrs(attrs),
-                    'template_name': self.template_name
+                    'template_name': template_name
                 }
             }
 
@@ -80,7 +105,7 @@ class PopupViewWidget(forms.TextInput):
         context = self.get_context(name, value, attrs)
 
         if django.VERSION < (1, 11):
-            template = loader.get_template(self.template_name)
+            template = loader.get_template(self.get_template_name())
             return template.render(context).strip()
 
         else:

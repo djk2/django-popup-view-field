@@ -3,41 +3,42 @@ language: python
 
 matrix:
     include:
-        - { python: 2.7, env: TOXENV=py27-dj_1.8-bootstrap_7.1-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.8-bootstrap_7.1-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap_7.1-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap_7.1-crispy_1.6-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap_8.1-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap_8.1-crispy_1.6-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap_8.2-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap_8.2-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap_7.1-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap_7.1-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap_8.1-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap_8.1-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap_8.2-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap_8.2-crispy_1.6-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap_7.1-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap_7.1-crispy_1.6-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap_8.1-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap_8.1-crispy_1.6-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap_8.2-crispy_1.5-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap_8.2-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap_7.1-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap_7.1-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap_8.1-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap_8.1-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap_8.2-crispy_1.5-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap_8.2-crispy_1.6-tests }
-        - { python: 2.7, env: TOXENV=py27-dj_1.11-bootstrap_8.2-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_1.11-bootstrap_8.2-crispy_1.6-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_2.0-bootstrap_8.2-crispy_1.7-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_2.1-bootstrap_8.2-crispy_1.7-tests }
         - { python: 2.7, env: TOXENV=py27-flake }
         - { python: 3.6, env: TOXENV=py36-flake }
-
-    allow_failures:
-        - env: TOXENV=py27-dj_1.11-bootstrap_8.2-crispy_1.6-tests
+        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap3_7.1-crispy_1.5-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap3_7.1-crispy_1.6-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap3_8.1-crispy_1.5-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap3_8.1-crispy_1.6-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap3_8.2-crispy_1.5-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.9-bootstrap3_8.2-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap3_7.1-crispy_1.5-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap3_7.1-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap3_8.1-crispy_1.5-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap3_8.1-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap3_8.2-crispy_1.5-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.9-bootstrap3_8.2-crispy_1.6-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap3_7.1-crispy_1.5-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap3_7.1-crispy_1.6-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap3_8.1-crispy_1.5-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap3_8.1-crispy_1.6-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap3_8.2-crispy_1.5-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.10-bootstrap3_8.2-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap3_7.1-crispy_1.5-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap3_7.1-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap3_8.1-crispy_1.5-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap3_8.1-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap3_8.2-crispy_1.5-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.10-bootstrap3_8.2-crispy_1.6-tests }
+        - { python: 2.7, env: TOXENV=py27-dj_1.11-bootstrap3_8.2-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_1.11-bootstrap3_8.2-crispy_1.6-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.0-latest_bootstraps-crispy_1.7-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.0-latest_bootstraps-crispy_1.8-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.1-latest_bootstraps-crispy_1.7-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.1-latest_bootstraps-crispy_1.8-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.2-latest_bootstraps-crispy_1.7-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.2-latest_bootstraps-crispy_1.8-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.1-latest_bootstraps-crispy_1.8-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_2.2-latest_bootstraps-crispy_1.8-tests }
 
 install:
     - pip install tox>=2.5.0
