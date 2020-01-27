@@ -6,6 +6,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python: [3.7]
+
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
