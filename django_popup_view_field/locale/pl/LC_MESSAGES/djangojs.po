@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-09 22:04+0100\n"
+"POT-Creation-Date: 2020-01-27 20:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,9 +19,21 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: static/django_popup_view_field/js/django_popup_view_field.js:100
-msgid "Close"
-msgstr "Zamknij"
-#: static/django_popup_view_field/js/django_popup_view_field.js:99
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap3.js:99
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap3.min.js:1
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap4.js:96
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap4.min.js:1
 msgid "Data is loading ..."
 msgstr "Trwa ładowanie danych ..."
+
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap3.js:100
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap3.min.js:1
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap4.js:97
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap4.min.js:1
+msgid "Close"
+msgstr "Zamknij"
+
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap4.js:89
+#: django_popup_view_field/static/django_popup_view_field/js/django_popup_view_field_bootstrap4.min.js:1
+msgid "Error on loading data."
+msgstr "Błąd podczas ładowania danych."

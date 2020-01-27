@@ -86,13 +86,13 @@ $(document).ready(function(){
             bind_events($dialog, $button);
         });
         request.fail(function(response){
-            $dialog.modal('dispose');
+            $dialog.find(".modal-body").html(gettext('Error on loading data.'));
             throw new Error("django-popup-view-field - Ajax request to url: " + url);
         });
     };
 
     var set_dialog = function($button){
-        var $dialog = $("#django-popup-view-field");
+        var $dialog = $("#django-popup-view-field-dialog");
         var dial_body = gettext('Data is loading ...');
         var dial_close = gettext('Close');
         if ($button !== null) {
@@ -103,22 +103,19 @@ $(document).ready(function(){
         $dialog.find(".modal-title").html(dial_title);
         $dialog.find(".modal-body").html(dial_body);
         $dialog.find(".modal-footer-close").html(dial_close);
+        return $dialog;
     };
 
     $(".popup-view-btn-load").on("click", function(){
         var $button = $(this);
         var url = get_url($button);
-        var $dialog = $("#django-popup-view-field");
-        set_dialog($button);
+        $dialog =   set_dialog($button);
+        $dialog.modal('show');
         get_content($dialog, $button, url, "GET", null);
-
         $dialog.on('hidden.bs.modal', function (e) {
             $dialog.modal('hide');
             set_dialog(null);
         });
-
-        $dialog.modal({});
-
     });
 
     $(".popup-view-btn-clear").on("click", function(){

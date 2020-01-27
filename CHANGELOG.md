@@ -1,5 +1,13 @@
 # CHANGELOG for django-popup-view-field
 
+## 0.6.1 (2020-01-27)
+
+* Added support for Django 3.0 (demand django-crispy-forms >= 1.8.0 )
+
+* Fixed javascript for bootstrap4.
+  In script was used incorrectly `id` attribute  of dialog element.
+  Now `id` of `<div>` dialog for popup is different for bootstrap3 and bootstrap4.
+
 ## 0.6.0 (2020-01-23)
 
 * Added support for Django 2.2
