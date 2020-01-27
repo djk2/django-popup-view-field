@@ -1,0 +1,22 @@
+name: Tests by Tox
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [2.7, 3.7]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install Tox
+        run: pip install tox
+      - name: Run Tox
+        run: tox -r  # Run tox using the version of Python in `PATH`
