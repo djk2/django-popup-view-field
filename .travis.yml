@@ -37,8 +37,7 @@ matrix:
         - { python: 3.6, env: TOXENV=py36-dj_2.1-latest_bootstraps-crispy_1.8-tests }
         - { python: 3.6, env: TOXENV=py36-dj_2.2-latest_bootstraps-crispy_1.7-tests }
         - { python: 3.6, env: TOXENV=py36-dj_2.2-latest_bootstraps-crispy_1.8-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_2.1-latest_bootstraps-crispy_1.8-tests }
-        - { python: 3.6, env: TOXENV=py36-dj_2.2-latest_bootstraps-crispy_1.8-tests }
+        - { python: 3.6, env: TOXENV=py36-dj_3.0-latest_bootstraps-crispy_1.8-tests }
 
 install:
     - pip install tox>=2.5.0
