@@ -1,5 +1,9 @@
 # CHANGELOG for django-popup-view-field
 
+## 0.6.2 (2020-06-10)
+
+* Added better support for dynamic formset. Replaced `data` jQuery methods to `attr`, Issue #21
+
 ## 0.6.1 (2020-01-27)
 
 * Added support for Django 3.0 (demand django-crispy-forms >= 1.8.0 )

@@ -10,7 +10,7 @@ $(document).ready(function(){
     var dialog_counter = 0;
 
     var get_url = function($button){
-        var url = $button.data("url");
+        var url = $button.attr("data-url");
         return url;
     };
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
         $dial_body.find("*").on("click", function(event){
             var target_id = null, $target = null;
             var $elem = $(this);
-            var value = $elem.data("popup-view-value");
+            var value = $elem.attr("data-popup-view-value");
 
             // Set value in field
             if (value !== undefined) {
@@ -39,7 +39,7 @@ $(document).ready(function(){
                     }
                 }
 
-                target_id = $button.data("target");
+                target_id = $button.attr("data-target");
                 target = $("#" + target_id);
                 event.stopPropagation();
                 $dialog.modal('hide');
@@ -96,7 +96,7 @@ $(document).ready(function(){
         var dial_body = gettext('Data is loading ...');
         var dial_close = gettext('Close');
         if ($button !== null) {
-            var dial_title = $button.data('popup-dialog-title');
+            var dial_title = $button.attr('data-popup-dialog-title');
         } else {
             dial_title = 'Modal title';
         }
@@ -120,7 +120,7 @@ $(document).ready(function(){
 
     $(".popup-view-btn-clear").on("click", function(){
         var $button = $(this);
-        var target_id = $button.data("target");
+        var target_id = $button.attr("data-target");
         var $target = $("#" + target_id);
         $target.val("");
     });
